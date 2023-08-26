@@ -6,11 +6,11 @@
      <meta http-equiv="X-UA-Compatible" content="IE-edge">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-  </head>
-  </head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>   
+    
   <style>
     h1{
-  font-size:40px;
+  font-size:25px;
   text-align:center;
   font-family:read-write-plaintext-only;
   font-weight:normal;
@@ -23,6 +23,8 @@
     h2{
       text-align:center;
       margin-top:50px;
+      margin-bottom:40px;
+      font-size:20px;
     }
 
     h3{
@@ -34,18 +36,175 @@
       color:rgb(80, 80, 80);
     }
 
-    #k-container{
+    #container{
       margin:0 auto;
     }
+
+   /* Nav.html header*/
+
+    #header {
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:20px 80px;
+    background-color:#151414;
+    box-shadow:rgba(47,47,47,0.06);
+    z-index:999;
+    position:sticky;
+    top:0;
+    left:0
+}
+#header .logo {
+    text-decoration:none;
+    font-size:50px;
+    font-weight:600;
+    color:#fff;
+    transition:.3 ease
+}
+#navbar {
+    display:flex;
+    align-items:center;
+    justify-content:center
+}
+#navbar li {
+    list-style:none;
+    padding:0 20px;
+    position:relative
+}
+#navbar li a {
+    text-decoration:none;
+    font-size:16px;
+    font-weight:600;
+    color:#fff;
+    transition:.3 ease
+}
+#navbar li a:hover,#navbar li a.active {
+    color:#6ef0c9
+}
+#navbar li a.active::after,#navbar li a:hover::after {
+    content:"";
+    width:30%;
+    height:2px;
+    background:#6ef0c9;
+    position:absolute;
+    bottom:-4px;
+    left:20px
+}
+#mobile {
+    display:none;
+    align-items:center
+}
+#close {
+    position:absolute;
+    color:#020202;
+    font-size:1px
+}
+
+
+ /*Footer*/   
+    #footer {
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:space-between;
+    background-color:#000;
+   
+}
+#footer .col {
+    display: flex;
+    flex-direction:column;
+    align-items:flex-start;
+    margin-bottom:20px;
+    color: #eee9e9;
+    padding: 20px;
+}
+
+#footer:hover {
+    color: #6beac3;
+}
+
+#footer p {
+    font-size:20px;
+    text-decoration:none;
+    color:#fff;
+    padding:10px
+}
+
+#footer a {
+    font-size:15px;
+    text-decoration:none;
+    color:#fff;
+    padding:10px
+}
+#footer a:hover {
+    color:#6ef0c9
+}
+#footer .copyright {
+    width:100%;
+    text-align:center;
+    font-size:10px;
+    color:#a7a7a7;
+    margin-top:30px
+}
+
+@media(max-width:799px) {
+    #navbar {
+        display:flex;
+        flex-direction:column;
+        align-items:flex-start;
+        justify-content:flex-start;
+        position:fixed;
+        top:0;
+        right:-300px;
+        height:100vh;
+        width:300px;
+        background-color:#000;
+        box-shadow:0 40px 60px rgba(0,0,0,0.1);
+        padding:80px 0 0 10px;
+        transition:.1s
+    }
+    #navbar.active {
+        right:0
+    }
+    #navbar li {
+        margin-bottom:25px
+    }
+    #mobile {
+        color:#fff;
+        display:flex;
+        align-items:center
+    }
+    #close {
+        position:absolute;
+        top: 30px;
+        left: 200px;
+        color:#fff;
+        font-size:24px
+    }
+
+ .row{
+   
+ }
+   
+
+  
+ @media (max-width:477px) {
+    #header {
+        padding:10px 30px
+    } 
+
+   
   </style>
+  </head>
+
+  
   <body>
+    {% include 'nav.html' %}
     
     <div id="container">
-    <h1> {{company_name}} Agence</h1>
+    <h1> {{company_name}} | Conecte-se as Empresas</h1>
     
-    <h2>Aqui encontrará empregos disponíveis em vários países</h2>
-      <h3>Vagas Abertas</h3>
-      <p class="body-text" style="margin-left:30px;">Todo- ver detalhes sobre a vaga</p>
+    <h2>Aqui encontrará vagas em vários países</h2>
+      <p class="body-text" style="margin-left:30px;">Vagas disponíveis no momento</p>
 
      <div style="margin-bottom:4px;">
         {% for job in jobs %}
@@ -55,11 +214,12 @@
 
       
       <div style="text-align:center;">
-        <button class="btn btn-primary btn-lg">Contacte-nos</button>
-        <p class="mt-4">Copyright 2023, keyline agence</p>
+        <a href="" type="button" class="btn btn-primary btn-lg  mt-4" style="margin-bottom:20px;">Seguinte</a>
+       
     </div>
 
 
     </div>
+    {% include 'footer.html' %}
   </body>
 </html>
